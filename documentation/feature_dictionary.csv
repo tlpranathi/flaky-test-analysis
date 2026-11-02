@@ -1,0 +1,29 @@
+feature,renamed_feature,description,type
+ExecutionTime,execution_time_s,Time taken to execute the test.,Numerical
+numCoveredLines,covered_lines,Number of source code lines covered by the test.,Numerical
+projectSourceLinesCovered,source_lines_covered,Number of project source lines covered.,Numerical
+projectSourceClassesCovered,source_classes_covered,Number of project source classes covered.,Numerical
+num_third_party_libs,third_party_libs,Number of third-party libraries used.,Numerical
+testLength,test_length,Length of the test in lines.,Numerical
+numAsserts,num_asserts,Number of assertions in the test.,Numerical
+assertion-roulette,smell_assertion_roulette,Test smell related to ambiguous assertions.,Binary
+conditional-test-logic,smell_conditional_logic,Test smell involving conditional logic inside tests.,Binary
+eager-test,smell_eager_test,Test smell involving testing too much functionality in one test.,Binary
+fire-and-forget,smell_fire_and_forget,Test smell involving asynchronous operations without proper verification.,Binary
+indirect-testing,smell_indirect_testing,Test smell where functionality is tested indirectly.,Binary
+mystery-guest,smell_mystery_guest,Test smell involving external resources or dependencies.,Binary
+resource-optimism,smell_resource_optimism,Test smell involving assumptions about resource availability.,Binary
+test-run-war,smell_test_run_war,Test smell involving execution-order or shared-state dependencies.,Binary
+flaky,flaky,"Target label: 1 means flaky, 0 means non-flaky.",Binary
+test_name,test_name,Unique test identifier.,Identifier
+project,project,Name of the Java project.,Identifier
+testClassName,testClassName,Name of the test class.,Identifier
+testMethodName,testMethodName,Name of the test method.,Identifier
+hIndexModificationsPerCoveredLine_window5,changed_line_churn_w5,Modification h-index for covered lines over the last 5 commits.,Numerical
+hIndexModificationsPerCoveredLine_window10,changed_line_churn_w10,Modification h-index for covered lines over the last 10 commits.,Numerical
+hIndexModificationsPerCoveredLine_window25,changed_line_churn_w25,Modification h-index for covered lines over the last 25 commits.,Numerical
+hIndexModificationsPerCoveredLine_window50,changed_line_churn_w50,Modification h-index for covered lines over the last 50 commits.,Numerical
+hIndexModificationsPerCoveredLine_window75,changed_line_churn_w75,Modification h-index for covered lines over the last 75 commits.,Numerical
+hIndexModificationsPerCoveredLine_window100,changed_line_churn_w100,Modification h-index for covered lines over the last 100 commits.,Numerical
+hIndexModificationsPerCoveredLine_window500,changed_line_churn_w500,Modification h-index for covered lines over the last 500 commits.,Numerical
+hIndexModificationsPerCoveredLine_window10000,changed_line_churn_w10000,Modification h-index for covered lines over the last 10000 commits.,Numerical

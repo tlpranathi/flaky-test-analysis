@@ -1,0 +1,18 @@
+FLAKEFLAGGER DATASET VALIDATION REPORT
+=============================================
+
+FEATURES DATASET
+-------------------------
+Rows: 22236
+Columns: 29
+Projects: 24
+Flaky tests: 811
+Missing values: 819
+Validation successful: True
+
+RESULTS DATASET
+-------------------------
+Rows: 22245
+Columns: 8
+Missing values: 0
+Validation successful: True
