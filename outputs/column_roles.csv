@@ -1,0 +1,39 @@
+column,role
+test_name,identifier
+project,identifier
+testClassName,identifier
+testMethodName,identifier
+flaky,target
+flaky_label,target
+smell_assertion_roulette,model_feature
+smell_conditional_logic,model_feature
+smell_eager_test,model_feature
+smell_fire_and_forget,model_feature
+smell_indirect_testing,model_feature
+smell_mystery_guest,model_feature
+smell_resource_optimism,model_feature
+smell_test_run_war,model_feature
+test_length,model_feature
+num_asserts,model_feature
+covered_lines,model_feature
+execution_time_s,model_feature
+source_lines_covered,model_feature
+source_classes_covered,model_feature
+changed_line_churn_w5,model_feature
+changed_line_churn_w10,model_feature
+changed_line_churn_w25,model_feature
+changed_line_churn_w50,model_feature
+changed_line_churn_w75,model_feature
+changed_line_churn_w100,model_feature
+changed_line_churn_w500,model_feature
+changed_line_churn_w10000,model_feature
+third_party_libs,model_feature
+execution_time_bucket,bucket (EDA / Power BI)
+third_party_libs_bucket,bucket (EDA / Power BI)
+source_lines_covered_bucket,bucket (EDA / Power BI)
+NumFailingRuns,leakage - NOT a model feature
+NumPassingRuns,leakage - NOT a model feature
+FirstFailingRunID,leakage - NOT a model feature
+FirstPassingRunID,leakage - NOT a model feature
+UniqueFailingExceptionTypes,leakage - NOT a model feature
+fail_rate_pct,leakage - NOT a model feature

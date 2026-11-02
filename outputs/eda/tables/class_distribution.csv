@@ -1,0 +1,3 @@
+label,tests,percentage
+Non-Flaky,21425,96.35
+Flaky,811,3.65

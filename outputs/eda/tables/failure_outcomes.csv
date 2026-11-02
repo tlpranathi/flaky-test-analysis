@@ -1,0 +1,5 @@
+outcome,flaky_tests,non_flaky_tests,total_tests,percentage
+Always passed,0,21223,21223,95.44
+Failed intermittently,810,0,810,3.64
+Always failed,0,146,146,0.66
+No rerun data,1,56,57,0.26

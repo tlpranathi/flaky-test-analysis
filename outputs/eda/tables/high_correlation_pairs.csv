@@ -1,0 +1,7 @@
+feature_1,feature_2,correlation
+source_lines_covered,source_classes_covered,0.8887
+changed_line_churn_w75,changed_line_churn_w100,0.884
+changed_line_churn_w50,changed_line_churn_w75,0.8689
+num_asserts,smell_assertion_roulette,0.8451
+changed_line_churn_w10,changed_line_churn_w25,0.8097
+changed_line_churn_w25,changed_line_churn_w50,0.8095

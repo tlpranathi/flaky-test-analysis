@@ -1,0 +1,14 @@
+metric,value
+total_tests,22236
+projects,24
+flaky_tests,811
+non_flaky_tests,21425
+flaky_pct,3.65
+imbalance_ratio_non_flaky_per_flaky,26.42
+projects_with_flaky_tests,23
+project_most_flaky_tests,spring-boot (163)
+project_highest_flaky_pct,alluxio (62.03%)
+tests_without_rerun_data,57
+non_flaky_tests_always_failing,146
+flaky_median_fail_rate_pct,0.71
+flaky_mean_fail_rate_pct,11.03
