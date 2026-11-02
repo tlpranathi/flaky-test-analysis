@@ -1,7 +1,46 @@
 import os
 
+# DATASET PATHS
+
 FEATURES_PATH = "data/test_features.csv"
 RESULTS_PATH = "data/test_results.csv"
+
+# PROJECT NAME MAPPING
+
+# Add mappings only after verifying that two project
+# names refer to the same actual project.
+
+# Example:
+# PROJECT_NAME_MAP = {
+#     "qos-ch-logback": "logback"
+# }
+
+PROJECT_NAME_MAP = {
+    "doanduyhai-achilles": "achilles",
+    "activiti-activiti": "activiti",
+    "alluxio-alluxio": "alluxio",
+    "apache-ambari": "ambari",
+    "joel-costigliola-assertj-core": "assertj-core",
+    "apache-commons-exec": "commons-exec",
+    "elasticjob-elastic-job-lite": "elastic-job-lite",
+    "jknack-handlebars.java": "handlebars.java",
+    "apache-hbase": "hbase",
+    "hector-client-hector": "hector",
+    "kevinsawicki-http-request": "http-request",
+    "apache-httpcore": "httpcore",
+    "apache-incubator-dubbo": "incubator-dubbo",
+    "tootallnate-java-websocket": "java-websocket",
+    "google-jimfs": "jimfs",
+    "qos-ch-logback": "logback",
+    "ninjaframework-ninja": "ninja",
+    "square-okhttp": "okhttp",
+    "orbit-orbit": "orbit",
+    "spring-projects-spring-boot": "spring-boot",
+    "undertow-io-undertow": "undertow",
+    "wildfly-wildfly": "wildfly",
+    "wro4j-wro4j": "wro4j",
+    "zxing-zxing": "zxing",
+}
 
 # COLUMN RENAMING
 
@@ -24,9 +63,12 @@ RENAME = {
     "test-run-war": "smell_test_run_war",
 }
 
+# CHANGED-LINE CHURN WINDOWS
+
 WINDOWS = (5, 10, 25, 50, 75, 100, 500, 10000)
 
 for window in WINDOWS:
+
     RENAME[
         f"hIndexModificationsPerCoveredLine_window{window}"
     ] = f"changed_line_churn_w{window}"
@@ -42,6 +84,7 @@ ID_COLS = [
 
 TARGET_COL = "flaky"
 
+
 SMELL_COLS = [
     "assertion-roulette",
     "conditional-test-logic",
@@ -53,9 +96,11 @@ SMELL_COLS = [
     "test-run-war"
 ]
 
+
 EXECUTION_COLS = [
     "ExecutionTime"
 ]
+
 
 COVERAGE_COLS = [
     "numCoveredLines",
@@ -63,19 +108,23 @@ COVERAGE_COLS = [
     "projectSourceClassesCovered"
 ]
 
+
 TEST_CHARACTERISTIC_COLS = [
     "testLength",
     "numAsserts"
 ]
 
+
 DEPENDENCY_COLS = [
     "num_third_party_libs"
 ]
+
 
 CHURN_COLS = [
     f"hIndexModificationsPerCoveredLine_window{w}"
     for w in WINDOWS
 ]
+
 
 FEATURE_COLS = (
     EXECUTION_COLS
@@ -105,16 +154,50 @@ RESULTS_TARGET_COL = "IsFlaky"
 
 EXPECTED_PROJECTS = 24
 
+# OUTPUT DIRECTORIES
+
 OUTPUT_DIR = "outputs"
 
 REPORT_DIR = "documentation"
+
 
 VALIDATION_REPORT = os.path.join(
     REPORT_DIR,
     "dataset_validation_report.txt"
 )
 
+
 FEATURE_DICTIONARY = os.path.join(
     REPORT_DIR,
     "feature_dictionary.csv"
+)
+
+
+MATCHING_REPORT = os.path.join(
+    REPORT_DIR,
+    "dataset_matching_report.csv"
+)
+
+
+UNMATCHED_FEATURES = os.path.join(
+    REPORT_DIR,
+    "unmatched_features.csv"
+)
+
+
+UNMATCHED_RESULTS = os.path.join(
+    REPORT_DIR,
+    "unmatched_results.csv"
+)
+
+
+LABEL_MISMATCHES = os.path.join(
+    REPORT_DIR,
+    "label_mismatches.csv"
+)
+
+
+PROJECT_NAME_REPORT = os.path.join(
+    REPORT_DIR,
+    "project_name_comparison.csv"
 )
