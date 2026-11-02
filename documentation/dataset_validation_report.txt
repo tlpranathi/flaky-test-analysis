@@ -7,12 +7,27 @@ Rows: 22236
 Columns: 29
 Projects: 24
 Flaky tests: 811
-Missing values: 819
+Non-flaky tests: 21425
+Flaky percentage: 3.65%
+
+Missing values by column:
+testLength: 273
+numAsserts: 273
+numCoveredLines: 273
+Total missing values: 819
+Duplicate test records: 0
+Invalid flaky labels: 0
+Infinite numerical values: 0
 Validation successful: True
 
 RESULTS DATASET
 -------------------------
 Rows: 22245
 Columns: 8
-Missing values: 0
+
+Missing values by column:
+No missing values.
+Total missing values: 0
+Duplicate result records: 0
+Invalid flaky labels: 0
 Validation successful: True

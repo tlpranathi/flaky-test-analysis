@@ -296,13 +296,49 @@ def save_validation_report(features_valid, results_valid,
         file.write(f"Columns: {len(features_df.columns)}\n")
         file.write(f"Projects: {features_df['project'].nunique()}\n")
 
+        flaky = (features_df["flaky"] == 1).sum()
+        non_flaky = (features_df["flaky"] == 0).sum()
+
+        file.write(f"Flaky tests: {flaky}\n")
+        file.write(f"Non-flaky tests: {non_flaky}\n")
         file.write(
-            f"Flaky tests: {(features_df['flaky'] == 1).sum()}\n"
+            f"Flaky percentage: {round(flaky / len(features_df) * 100, 2)}%\n"
         )
 
+        file.write("\nMissing values by column:\n")
+
+        missing = features_df.isnull().sum()
+        missing = missing[missing > 0]
+
+        if len(missing) > 0:
+            for col, count in missing.items():
+                file.write(f"{col}: {count}\n")
+        else:
+            file.write("No missing values.\n")
+
         file.write(
-            f"Missing values: {features_df.isnull().sum().sum()}\n"
+            f"Total missing values: {features_df.isnull().sum().sum()}\n"
         )
+
+        duplicates = features_df.duplicated(
+            subset=["project", "test_name"]
+        ).sum()
+
+        file.write(f"Duplicate test records: {duplicates}\n")
+
+        invalid_labels = (
+            ~features_df["flaky"].isin([0, 1])
+        ).sum()
+
+        file.write(f"Invalid flaky labels: {invalid_labels}\n")
+
+        numeric_df = features_df[FEATURE_COLS].select_dtypes(
+            include=np.number
+        )
+
+        infinite_values = int(np.isinf(numeric_df).sum().sum())
+
+        file.write(f"Infinite numerical values: {infinite_values}\n")
 
         file.write(
             f"Validation successful: {features_valid}\n\n"
@@ -314,15 +350,39 @@ def save_validation_report(features_valid, results_valid,
         file.write(f"Rows: {len(results_df)}\n")
         file.write(f"Columns: {len(results_df.columns)}\n")
 
+        file.write("\nMissing values by column:\n")
+
+        missing = results_df.isnull().sum()
+        missing = missing[missing > 0]
+
+        if len(missing) > 0:
+            for col, count in missing.items():
+                file.write(f"{col}: {count}\n")
+        else:
+            file.write("No missing values.\n")
+
         file.write(
-            f"Missing values: {results_df.isnull().sum().sum()}\n"
+            f"Total missing values: {results_df.isnull().sum().sum()}\n"
         )
+
+        duplicates = results_df.duplicated(
+            subset=["Project", "Test"]
+        ).sum()
+
+        file.write(f"Duplicate result records: {duplicates}\n")
+
+        invalid_labels = (
+            ~results_df["IsFlaky"].isin([0, 1])
+        ).sum()
+
+        file.write(f"Invalid flaky labels: {invalid_labels}\n")
 
         file.write(
             f"Validation successful: {results_valid}\n"
         )
 
     print("\nValidation report saved to:", VALIDATION_REPORT)
+
 
 def create_feature_dictionary():
 
