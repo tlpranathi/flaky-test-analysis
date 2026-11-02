@@ -8,8 +8,11 @@ from src.config import (
     SMELL_COLS,
     TARGET_COL,
     TEST_CHARACTERISTIC_COLS,
+    RESULTS_TARGET_COL,
     OUTPUT_DIR
 )
+
+from src.dataset_matching import normalize_project_name
 
 # OUTPUT FILE
 
@@ -30,6 +33,17 @@ UNUSED_COLS = [
 FILL_COLS = [
     RENAME[col] for col in TEST_CHARACTERISTIC_COLS
 ] + [RENAME["numCoveredLines"]]
+
+# Rerun outcome columns from test_results.csv. They describe how the
+# test behaved when rerun, so they leak the label (NOT model features).
+
+RERUN_COLS = [
+    "NumFailingRuns",
+    "NumPassingRuns",
+    "FirstFailingRunID",
+    "FirstPassingRunID",
+    "UniqueFailingExceptionTypes"
+]
 
 # 1. LOAD DATASETS
 
@@ -208,7 +222,122 @@ def check_impossible_values(features, results):
 
     print("Tests that failed in every run (never passed):", never_passed)
 
-# 7. SAVE CLEANED DATA
+# 7. CHECK DUPLICATE RECORDS
+
+def check_duplicates(df, key_cols, dataset_name):
+    """Report duplicate test names / full rows and drop full duplicates."""
+
+    print(f"\n========== DUPLICATE CHECK: {dataset_name} ==========")
+
+    full_duplicates = int(df.duplicated().sum())
+
+    key_duplicates = int(df.duplicated(subset=key_cols).sum())
+
+    print("Full duplicate rows:", full_duplicates)
+    print(f"Duplicate {key_cols}:", key_duplicates)
+
+    df = df.drop_duplicates().reset_index(drop=True)
+
+    # Same test name but different values: not a true duplicate,
+    # so it is reported but kept for manual review
+
+    conflicting = int(df.duplicated(subset=key_cols).sum())
+
+    if conflicting:
+        print(
+            f"WARNING: {conflicting} records share a test name "
+            "but differ in values. Kept for review."
+        )
+
+    print("Rows dropped:", full_duplicates)
+
+    return df, full_duplicates
+
+# 8. MERGE RERUN RESULTS
+
+def merge_results(features, results):
+    """Left-join rerun results onto features using normalised test keys."""
+
+    print("\n========== MERGE RERUN RESULTS ==========")
+
+    features = features.copy()
+    results = results.copy()
+
+    # Features store test_name as lowercase "class.method", results
+    # store "Class#method". Lowercasing would merge tests that differ
+    # only in case, so the features key is rebuilt case-preserving
+    # from testClassName and testMethodName.
+
+    features["project_key"] = features["project"].apply(normalize_project_name)
+    results["project_key"] = results["Project"].apply(normalize_project_name)
+
+    features["test_key"] = (
+        features["testClassName"].astype(str).str.strip()
+        + "#"
+        + features["testMethodName"].astype(str).str.strip()
+    )
+
+    results["test_key"] = results["Test"].astype(str).str.strip()
+
+    consistent_names = (
+        features["test_key"].str.replace("#", ".", regex=False).str.lower()
+        == features["test_name"]
+    ).mean()
+
+    print(
+        "test_name matches lowercase Class.method:",
+        f"{consistent_names * 100:.2f}%"
+    )
+
+    case_collisions = int(
+        results.assign(
+            lower_key=results["test_key"].str.lower()
+        ).duplicated(subset=["project_key", "lower_key"]).sum()
+    )
+
+    print("Result tests differing only by case:", case_collisions)
+
+    results = results.drop(columns=["Project", "Test"])
+
+    merged = pd.merge(
+        features,
+        results,
+        on=["project_key", "test_key"],
+        how="left",
+        indicator=True,
+        validate="one_to_one"
+    )
+
+    matched = int((merged["_merge"] == "both").sum())
+    unmatched = len(merged) - matched
+
+    print("Feature rows:", len(features))
+    print("Matched with results:", matched)
+    print(f"Match rate: {matched / len(features) * 100:.2f}%")
+    print("Without rerun data (empty rerun columns):", unmatched)
+
+    # Compare the two flaky labels on matched rows
+
+    both = merged["_merge"] == "both"
+
+    mismatches = int(
+        (merged.loc[both, TARGET_COL] != merged.loc[both, RESULTS_TARGET_COL]).sum()
+    )
+
+    print("Label mismatches (flaky vs IsFlaky):", mismatches)
+
+    # flaky from test_features is the label; IsFlaky is redundant
+
+    merged = merged.drop(
+        columns=["project_key", "test_key", "_merge", RESULTS_TARGET_COL]
+    )
+
+    for col in RERUN_COLS:
+        merged[col] = merged[col].astype("Int64")
+
+    return merged, matched, unmatched
+
+# 9. SAVE CLEANED DATA
 
 def save_cleaned_data(df, path=CLEANED_DATA):
     """Save the cleaned dataset to the outputs folder."""
@@ -219,7 +348,7 @@ def save_cleaned_data(df, path=CLEANED_DATA):
 
     print("\nCleaned data saved to:", path)
 
-# 8. MAIN EXECUTION
+# 10. MAIN EXECUTION
 
 def main():
 
@@ -235,14 +364,26 @@ def main():
 
     check_impossible_values(features, results)
 
+    features, feature_dups = check_duplicates(
+        features, ["project", "test_name"], "test_features"
+    )
+
+    results, result_dups = check_duplicates(
+        results, ["Project", "Test"], "test_results"
+    )
+
+    cleaned, matched, unmatched = merge_results(features, results)
+
     print("\n========== CLEANING SUMMARY ==========")
 
-    print(f"Rows: {rows_before} -> {len(features)}")
-    print(f"Columns: {cols_before} -> {len(features.columns)}")
+    print(f"Rows: {rows_before} -> {len(cleaned)}")
+    print(f"Columns: {cols_before} -> {len(cleaned.columns)}")
     print("Values filled:", sum(filled.values()), filled)
     print("Malformed values fixed:", fixed)
+    print("Duplicates removed:", feature_dups + result_dups)
+    print(f"Rerun data attached: {matched} rows ({unmatched} without)")
 
-    save_cleaned_data(features)
+    save_cleaned_data(cleaned)
 
 
 if __name__ == "__main__":
