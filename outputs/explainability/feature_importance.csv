@@ -1,0 +1,24 @@
+feature,shap_mean_abs,shap_direction,shap_value_corr,permutation_importance,permutation_std,dt_importance,lr_coef,lr_abs_coef,shap_rank,permutation_rank,dt_rank,lr_rank
+execution_time_s,0.08048,higher -> more flaky,0.94773,0.18855,0.02256,0.32635,1.90013,1.90013,1,1,1,1
+source_classes_covered,0.05026,higher -> more flaky,0.54464,0.13434,0.00644,0.06532,-0.6209,0.6209,2,2,3,3
+source_lines_covered,0.04703,higher -> more flaky,0.56293,0.06367,0.00873,0.05355,0.96426,0.96426,3,4,4,2
+changed_line_churn_w100,0.04443,higher -> more flaky,0.61987,0.08769,0.01111,0.27258,0.46596,0.46596,4,3,2,5
+changed_line_churn_w75,0.04258,higher -> more flaky,0.10056,0.02678,0.00843,0.0109,-0.27623,0.27623,5,11,17,8
+covered_lines,0.02708,higher -> more flaky,0.67039,0.02833,0.01637,0.01716,-0.16307,0.16307,6,10,10,15
+changed_line_churn_w50,0.0259,higher -> less flaky,-0.13787,0.02948,0.01643,0.015,0.2219,0.2219,7,8,13,11
+test_length,0.02258,higher -> more flaky,0.15482,0.02024,0.0044,0.01519,0.19534,0.19534,8,12,12,13
+smell_fire_and_forget,0.02106,higher -> more flaky,0.45449,-0.0095,0.00818,0.01859,0.27989,0.27989,9,21,9,7
+changed_line_churn_w10,0.01954,higher -> less flaky,-0.5929,0.03009,0.01044,0.01491,-0.20868,0.20868,10,6,14,12
+changed_line_churn_w500,0.01935,higher -> more flaky,0.41871,0.03097,0.01575,0.01583,0.02014,0.02014,11,5,11,23
+changed_line_churn_w25,0.01764,higher -> less flaky,-0.50115,0.01212,0.01268,0.02567,-0.26557,0.26557,12,15,7,9
+changed_line_churn_w10000,0.01699,higher -> less flaky,-0.57954,0.02905,0.01427,0.04737,-0.12266,0.12266,13,9,5,17
+smell_indirect_testing,0.01537,higher -> less flaky,-0.74241,0.00959,0.01838,0.00815,-0.38881,0.38881,14,16,19,6
+smell_assertion_roulette,0.01482,higher -> more flaky,0.63782,0.01785,0.00368,0.00273,0.07092,0.07092,15,13,21,21
+num_asserts,0.01435,higher -> more flaky,0.56312,0.01226,0.00892,0.01169,-0.24662,0.24662,16,14,16,10
+changed_line_churn_w5,0.01422,higher -> more flaky,0.58605,0.02971,0.00717,0.00056,0.48405,0.48405,17,7,23,4
+third_party_libs,0.0125,higher -> less flaky,-0.58531,0.00579,0.00318,0.01025,0.17815,0.17815,18,18,18,14
+smell_mystery_guest,0.00981,higher -> more flaky,0.27692,0.00613,0.00154,0.02624,0.11799,0.11799,19,17,6,18
+smell_test_run_war,0.00686,higher -> more flaky,0.22157,-0.00985,0.00171,0.02283,0.07294,0.07294,20,22,8,20
+smell_resource_optimism,0.00468,higher -> more flaky,0.19244,0.00141,0.0007,0.00638,0.16286,0.16286,21,19,20,16
+smell_eager_test,0.00405,higher -> less flaky,-0.51403,-0.01171,0.00662,0.01216,-0.06569,0.06569,22,23,15,22
+smell_conditional_logic,0.00204,mixed,-0.05182,0.00025,0.00275,0.0006,0.08476,0.08476,23,20,22,19

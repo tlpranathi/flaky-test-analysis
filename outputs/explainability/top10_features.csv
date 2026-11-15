@@ -1,0 +1,11 @@
+shap_rank,feature,shap_mean_abs
+1,execution_time_s,0.08048
+2,source_classes_covered,0.05026
+3,source_lines_covered,0.04703
+4,changed_line_churn_w100,0.04443
+5,changed_line_churn_w75,0.04258
+6,covered_lines,0.02708
+7,changed_line_churn_w50,0.0259
+8,test_length,0.02258
+9,smell_fire_and_forget,0.02106
+10,changed_line_churn_w10,0.01954

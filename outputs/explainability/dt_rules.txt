@@ -1,0 +1,92 @@
+Decision Tree rules (first 4 levels of a depth-10 tree).
+class: 1 = flaky, 0 = non-flaky. weights = training rows per class
+after balancing. '...' marks deeper branches that were cut off.
+
+|--- execution_time_s <= 0.022
+|   |--- source_classes_covered <= 1.987
+|   |   |--- changed_line_churn_w100 <= 1.422
+|   |   |   |--- execution_time_s <= 0.020
+|   |   |   |   |--- weights: [75.000, 0.000] class: 0
+|   |   |   |--- execution_time_s >  0.020
+|   |   |   |   |--- weights: [6.000, 2.000] class: 0
+|   |   |--- changed_line_churn_w100 >  1.422
+|   |   |   |--- execution_time_s <= 0.007
+|   |   |   |   |--- covered_lines <= 0.981
+|   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |--- covered_lines >  0.981
+|   |   |   |   |   |--- weights: [45.000, 0.000] class: 0
+|   |   |   |--- execution_time_s >  0.007
+|   |   |   |   |--- smell_indirect_testing <= 0.068
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- smell_indirect_testing >  0.068
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |--- source_classes_covered >  1.987
+|   |   |--- smell_fire_and_forget <= 0.018
+|   |   |   |--- test_length <= 2.975
+|   |   |   |   |--- covered_lines <= 4.500
+|   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |--- covered_lines >  4.500
+|   |   |   |   |   |--- weights: [9.000, 0.000] class: 0
+|   |   |   |--- test_length >  2.975
+|   |   |   |   |--- smell_resource_optimism <= 0.003
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- smell_resource_optimism >  0.003
+|   |   |   |   |   |--- truncated branch of depth 4
+|   |   |--- smell_fire_and_forget >  0.018
+|   |   |   |--- smell_test_run_war <= 0.018
+|   |   |   |   |--- smell_fire_and_forget <= 0.994
+|   |   |   |   |   |--- weights: [0.000, 8.000] class: 1
+|   |   |   |   |--- smell_fire_and_forget >  0.994
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- smell_test_run_war >  0.018
+|   |   |   |   |--- source_classes_covered <= 7.982
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- source_classes_covered >  7.982
+|   |   |   |   |   |--- weights: [34.000, 0.000] class: 0
+|--- execution_time_s >  0.022
+|   |--- changed_line_churn_w100 <= 1.001
+|   |   |--- changed_line_churn_w100 <= 0.999
+|   |   |   |--- execution_time_s <= 0.516
+|   |   |   |   |--- changed_line_churn_w100 <= 0.002
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- changed_line_churn_w100 >  0.002
+|   |   |   |   |   |--- weights: [0.000, 596.000] class: 1
+|   |   |   |--- execution_time_s >  0.516
+|   |   |   |   |--- source_classes_covered <= 2.998
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- source_classes_covered >  2.998
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |--- changed_line_churn_w100 >  0.999
+|   |   |   |--- execution_time_s <= 2.461
+|   |   |   |   |--- changed_line_churn_w10000 <= 1.983
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- changed_line_churn_w10000 >  1.983
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |--- execution_time_s >  2.461
+|   |   |   |   |--- changed_line_churn_w10000 <= 3.580
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- changed_line_churn_w10000 >  3.580
+|   |   |   |   |   |--- weights: [118.000, 0.000] class: 0
+|   |--- changed_line_churn_w100 >  1.001
+|   |   |--- source_lines_covered <= 63.006
+|   |   |   |--- changed_line_churn_w10000 <= 2.999
+|   |   |   |   |--- changed_line_churn_w10 <= 0.998
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- changed_line_churn_w10 >  0.998
+|   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- changed_line_churn_w10000 >  2.999
+|   |   |   |   |--- changed_line_churn_w100 <= 1.997
+|   |   |   |   |   |--- weights: [0.000, 83.000] class: 1
+|   |   |   |   |--- changed_line_churn_w100 >  1.997
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |--- source_lines_covered >  63.006
+|   |   |   |--- changed_line_churn_w100 <= 3.998
+|   |   |   |   |--- changed_line_churn_w500 <= 5.969
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- changed_line_churn_w500 >  5.969
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |--- changed_line_churn_w100 >  3.998
+|   |   |   |   |--- test_length <= 18.056
+|   |   |   |   |   |--- truncated branch of depth 6
+|   |   |   |   |--- test_length >  18.056
+|   |   |   |   |   |--- truncated branch of depth 4
