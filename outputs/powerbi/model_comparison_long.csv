@@ -1,0 +1,76 @@
+model_label,sampling_label,sampling_order,is_best,metric,value
+Logistic Regression,No balancing,0,False,precision,0.5935
+Logistic Regression,Undersample to 10%,1,False,precision,0.3772
+Logistic Regression,Undersample to 25%,2,False,precision,0.2283
+Logistic Regression,Undersample to 50%,3,False,precision,0.0957
+Logistic Regression,SMOTE to 50%,4,False,precision,0.1093
+Decision Tree,No balancing,0,False,precision,0.7073
+Decision Tree,Undersample to 10%,1,False,precision,0.5224
+Decision Tree,Undersample to 25%,2,False,precision,0.3008
+Decision Tree,Undersample to 50%,3,False,precision,0.1588
+Decision Tree,SMOTE to 50%,4,False,precision,0.4025
+Random Forest,No balancing,0,False,precision,0.876
+Random Forest,Undersample to 10%,1,False,precision,0.7302
+Random Forest,Undersample to 25%,2,False,precision,0.4921
+Random Forest,Undersample to 50%,3,False,precision,0.253
+Random Forest,SMOTE to 50%,4,True,precision,0.7841
+Logistic Regression,No balancing,0,False,recall,0.0703
+Logistic Regression,Undersample to 10%,1,False,recall,0.18
+Logistic Regression,Undersample to 25%,2,False,recall,0.4106
+Logistic Regression,Undersample to 50%,3,False,recall,0.6239
+Logistic Regression,SMOTE to 50%,4,False,recall,0.6165
+Decision Tree,No balancing,0,False,recall,0.5143
+Decision Tree,Undersample to 10%,1,False,recall,0.6325
+Decision Tree,Undersample to 25%,2,False,recall,0.7436
+Decision Tree,Undersample to 50%,3,False,recall,0.8644
+Decision Tree,SMOTE to 50%,4,False,recall,0.7336
+Random Forest,No balancing,0,False,recall,0.6092
+Random Forest,Undersample to 10%,1,False,recall,0.7066
+Random Forest,Undersample to 25%,2,False,recall,0.7929
+Random Forest,Undersample to 50%,3,False,recall,0.8952
+Random Forest,SMOTE to 50%,4,True,recall,0.6696
+Logistic Regression,No balancing,0,False,f1,0.1249
+Logistic Regression,Undersample to 10%,1,False,f1,0.2431
+Logistic Regression,Undersample to 25%,2,False,f1,0.2929
+Logistic Regression,Undersample to 50%,3,False,f1,0.1659
+Logistic Regression,SMOTE to 50%,4,False,f1,0.1857
+Decision Tree,No balancing,0,False,f1,0.5945
+Decision Tree,Undersample to 10%,1,False,f1,0.5716
+Decision Tree,Undersample to 25%,2,False,f1,0.4274
+Decision Tree,Undersample to 50%,3,False,f1,0.2681
+Decision Tree,SMOTE to 50%,4,False,f1,0.5195
+Random Forest,No balancing,0,False,f1,0.7183
+Random Forest,Undersample to 10%,1,False,f1,0.7178
+Random Forest,Undersample to 25%,2,False,f1,0.6069
+Random Forest,Undersample to 50%,3,False,f1,0.3944
+Random Forest,SMOTE to 50%,4,True,f1,0.7221
+Logistic Regression,No balancing,0,False,roc_auc,0.7598
+Logistic Regression,Undersample to 10%,1,False,roc_auc,0.7823
+Logistic Regression,Undersample to 25%,2,False,roc_auc,0.8044
+Logistic Regression,Undersample to 50%,3,False,roc_auc,0.8016
+Logistic Regression,SMOTE to 50%,4,False,roc_auc,0.8161
+Decision Tree,No balancing,0,False,roc_auc,0.8705
+Decision Tree,Undersample to 10%,1,False,roc_auc,0.8962
+Decision Tree,Undersample to 25%,2,False,roc_auc,0.9078
+Decision Tree,Undersample to 50%,3,False,roc_auc,0.9072
+Decision Tree,SMOTE to 50%,4,False,roc_auc,0.8958
+Random Forest,No balancing,0,False,roc_auc,0.9634
+Random Forest,Undersample to 10%,1,False,roc_auc,0.9689
+Random Forest,Undersample to 25%,2,False,roc_auc,0.9679
+Random Forest,Undersample to 50%,3,False,roc_auc,0.9619
+Random Forest,SMOTE to 50%,4,True,roc_auc,0.9687
+Logistic Regression,No balancing,0,False,pr_auc,0.2227
+Logistic Regression,Undersample to 10%,1,False,pr_auc,0.2156
+Logistic Regression,Undersample to 25%,2,False,pr_auc,0.1972
+Logistic Regression,Undersample to 50%,3,False,pr_auc,0.1815
+Logistic Regression,SMOTE to 50%,4,False,pr_auc,0.1862
+Decision Tree,No balancing,0,False,pr_auc,0.5887
+Decision Tree,Undersample to 10%,1,False,pr_auc,0.5081
+Decision Tree,Undersample to 25%,2,False,pr_auc,0.3777
+Decision Tree,Undersample to 50%,3,False,pr_auc,0.2452
+Decision Tree,SMOTE to 50%,4,False,pr_auc,0.4969
+Random Forest,No balancing,0,False,pr_auc,0.7844
+Random Forest,Undersample to 10%,1,False,pr_auc,0.7732
+Random Forest,Undersample to 25%,2,False,pr_auc,0.7334
+Random Forest,Undersample to 50%,3,False,pr_auc,0.6687
+Random Forest,SMOTE to 50%,4,True,pr_auc,0.7691
