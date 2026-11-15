@@ -1,0 +1,24 @@
+final_rank,feature,shap_rank,permutation_rank,dt_rank,lr_rank,top10_SHAP,top10_Permutation,top10_Decision Tree,top10_LR coefficient,votes,rank_spread,verdict
+1,execution_time_s,1,1,1,1,Yes,Yes,Yes,Yes,4,0,all 4 methods agree (top 10)
+2,source_classes_covered,2,2,3,3,Yes,Yes,Yes,Yes,4,1,all 4 methods agree (top 10)
+3,source_lines_covered,3,4,4,2,Yes,Yes,Yes,Yes,4,2,all 4 methods agree (top 10)
+4,changed_line_churn_w100,4,3,2,5,Yes,Yes,Yes,Yes,4,3,all 4 methods agree (top 10)
+5,changed_line_churn_w50,7,8,13,11,Yes,Yes,No,No,2,6,methods disagree (2 of 4)
+6,changed_line_churn_w75,5,11,17,8,Yes,No,No,Yes,2,12,methods disagree (2 of 4)
+7,covered_lines,6,10,10,15,Yes,Yes,Yes,No,3,9,most agree (3 of 4)
+8,changed_line_churn_w10,10,6,14,12,Yes,Yes,No,No,2,8,methods disagree (2 of 4)
+9,changed_line_churn_w25,12,15,7,9,No,No,Yes,Yes,2,8,methods disagree (2 of 4)
+10,changed_line_churn_w10000,13,9,5,17,No,Yes,Yes,No,2,12,methods disagree (2 of 4)
+11,test_length,8,12,12,13,Yes,No,No,No,1,5,only 1 method
+12,smell_fire_and_forget,9,21,9,7,Yes,No,Yes,Yes,3,14,most agree (3 of 4)
+13,changed_line_churn_w500,11,5,11,23,No,Yes,No,No,1,18,only 1 method
+14,changed_line_churn_w5,17,7,23,4,No,Yes,No,Yes,2,19,methods disagree (2 of 4)
+15,smell_indirect_testing,14,16,19,6,No,No,No,Yes,1,13,only 1 method
+16,num_asserts,16,14,16,10,No,No,No,Yes,1,6,only 1 method
+17,smell_mystery_guest,19,17,6,18,No,No,Yes,No,1,13,only 1 method
+18,third_party_libs,18,18,18,14,No,No,No,No,0,4,no method ranks it top 10
+19,smell_assertion_roulette,15,13,21,21,No,No,No,No,0,8,no method ranks it top 10
+20,smell_test_run_war,20,22,8,20,No,No,Yes,No,1,14,only 1 method
+21,smell_resource_optimism,21,19,20,16,No,No,No,No,0,5,no method ranks it top 10
+22,smell_eager_test,22,23,15,22,No,No,No,No,0,8,no method ranks it top 10
+23,smell_conditional_logic,23,20,22,19,No,No,No,No,0,4,no method ranks it top 10
