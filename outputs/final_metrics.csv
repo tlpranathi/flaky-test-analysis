@@ -1,0 +1,16 @@
+model_label,sampling,sampling_label,train_flaky_share_pct,test_flaky_share_pct,precision,recall,f1,roc_auc,pr_auc,f1_std,is_best_overall
+Decision Tree,none,No balancing,3.65,3.65,0.7073,0.5143,0.5945,0.8705,0.5887,0.0292,False
+Decision Tree,under_10,Undersample to 10%,10.0,3.65,0.5224,0.6325,0.5716,0.8962,0.5081,0.0111,False
+Decision Tree,under_25,Undersample to 25%,25.0,3.65,0.3008,0.7436,0.4274,0.9078,0.3777,0.0353,False
+Decision Tree,under_50,Undersample to 50%,50.0,3.65,0.1588,0.8644,0.2681,0.9072,0.2452,0.0156,False
+Decision Tree,smote_50,SMOTE to 50%,50.0,3.65,0.4025,0.7336,0.5195,0.8958,0.4969,0.0238,False
+Logistic Regression,none,No balancing,3.65,3.65,0.5935,0.0703,0.1249,0.7598,0.2227,0.0453,False
+Logistic Regression,under_10,Undersample to 10%,10.0,3.65,0.3772,0.18,0.2431,0.7823,0.2156,0.0198,False
+Logistic Regression,under_25,Undersample to 25%,25.0,3.65,0.2283,0.4106,0.2929,0.8044,0.1972,0.0259,False
+Logistic Regression,under_50,Undersample to 50%,50.0,3.65,0.0957,0.6239,0.1659,0.8016,0.1815,0.0067,False
+Logistic Regression,smote_50,SMOTE to 50%,50.0,3.65,0.1093,0.6165,0.1857,0.8161,0.1862,0.0123,False
+Random Forest,none,No balancing,3.65,3.65,0.876,0.6092,0.7183,0.9634,0.7844,0.0245,False
+Random Forest,under_10,Undersample to 10%,10.0,3.65,0.7302,0.7066,0.7178,0.9689,0.7732,0.0294,False
+Random Forest,under_25,Undersample to 25%,25.0,3.65,0.4921,0.7929,0.6069,0.9679,0.7334,0.02,False
+Random Forest,under_50,Undersample to 50%,50.0,3.65,0.253,0.8952,0.3944,0.9619,0.6687,0.0121,False
+Random Forest,smote_50,SMOTE to 50%,50.0,3.65,0.7841,0.6696,0.7221,0.9687,0.7691,0.0202,True
