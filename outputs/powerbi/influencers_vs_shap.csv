@@ -1,0 +1,12 @@
+feature,shap_rank,shap_direction,ki_rank,condition,ki_direction,in_shap_top10,in_ki_top10,agreement,rank_difference,direction_agrees
+changed_line_churn_w500,11,higher -> more flaky,2.0,is 4 - 5,unknown,False,True,Key Influencers only,9.0,
+source_lines_covered,3,higher -> more flaky,,,,True,False,SHAP only,,
+changed_line_churn_w75,5,higher -> more flaky,,,,True,False,SHAP only,,
+smell_fire_and_forget,9,higher -> more flaky,,,,True,False,SHAP only,,
+execution_time_s,1,higher -> more flaky,6.0,is more than 3.57,higher -> more flaky,True,True,both,5.0,yes
+source_classes_covered,2,higher -> more flaky,3.0,is 130 - 193,higher -> more flaky,True,True,both,1.0,yes
+changed_line_churn_w100,4,higher -> more flaky,5.0,is 2 - 3,unknown,True,True,both,1.0,
+covered_lines,6,higher -> more flaky,8.0,is 0 or less,lower -> more flaky,True,True,both,2.0,no
+changed_line_churn_w50,7,higher -> less flaky,1.0,is 2 - 4,unknown,True,True,both,6.0,
+test_length,8,higher -> more flaky,7.0,is 2 or less,unknown,True,True,both,1.0,
+changed_line_churn_w10,10,higher -> less flaky,4.0,is more than 2,higher -> more flaky,True,True,both,6.0,no
